@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time to Hydrate!</title>
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2980b9;
+      --accent-color: #2ecc71;
+      --background-start: #74ebd5;
+      --background-end: #9face6;
+      --text-color: #2c3e50;
+      --card-background: rgba(255, 255, 255, 0.8);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, var(--background-start), var(--background-end));
+      color: var(--text-color);
+      transition: background 0.5s ease;
+    }
+
+    body:hover {
+      background: linear-gradient(135deg, var(--background-end), var(--background-start));
+    }
+
+    .reminder-container {
+      background-color: var(--card-background);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      max-width: 90%;
+      width: 350px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .reminder-container:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-size: 28px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .progress-section {
+      margin: 25px 0;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 24px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 15px 0;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      transition: width 0.5s ease;
+      box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 16px;
+    }
+
+    .add-button {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+    }
+
+    .add-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    }
+
+    .close-button {
+      background-color: rgba(245, 245, 245, 0.8);
+      color: var(--text-color);
+    }
+
+    .close-button:hover {
+      background-color: rgba(224, 224, 224, 0.8);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .water-icon {
+      font-size: 72px;
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    #recommendation-text, #progress-text {
+      background-color: rgba(255, 255, 255, 0.3);
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 15px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    #recommendation-text:hover, #progress-text:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 400px) {
+      .reminder-container {
+        width: 90%;
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .water-icon {
+        font-size: 60px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="reminder-container">
+    <div class="water-icon">💧</div>
+    <h2>Time to Hydrate!</h2>
+    <p id="recommendation-text">Loading recommendation...</p>
+    
+    <div class="progress-section">
+      <p id="progress-text">Loading progress...</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="add-button" id="add-glass">Add Glass</button>
+      <button class="close-button" id="close-reminder">Dismiss</button>
+    </div>
+  </div>
+  <script src="reminder.js"></script>
+</body>
+</html>

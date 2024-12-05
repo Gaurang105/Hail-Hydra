@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "Hail Hydra",
+    "version": "1.0",
+    "description": "Personalized hydration tracking and reminders based on weather conditions",
+    "permissions": [
+        "geolocation",
+        "storage",
+        "notifications",
+        "alarms"
+    ],
+    "host_permissions": [
+        "http://api.weatherapi.com/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        }
+    },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    }
+}
